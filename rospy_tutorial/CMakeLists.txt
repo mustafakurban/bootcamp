@@ -57,9 +57,11 @@ catkin_install_python(PROGRAMS
   001_python_listener_publisher/scripts/pub.py
   001_python_listener_publisher/scripts/sub.py
 
-
   002_custom_python_listener_publisher/scripts/custom_msg_pub.py
   002_custom_python_listener_publisher/scripts/custom_msg_sub.py
+  
+  003_python_listener_publisher_class/scripts/pub_class.py
+  003_python_listener_publisher_class/scripts/sub_class.py
 
 
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
