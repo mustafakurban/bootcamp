@@ -1,6 +1,8 @@
 
 ### Ros Tutorials
 
+[How to run two python scripts simultaneously from a master script](https://stackoverflow.com/questions/50980648/how-to-run-two-python-scripts-simultaneously-from-a-master-script) 
+
 [Turtlesim](http://wiki.ros.org/turtlesim)
 
 [Installing and Configuring Your ROS Environment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)

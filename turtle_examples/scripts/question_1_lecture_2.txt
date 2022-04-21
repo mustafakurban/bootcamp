@@ -1,0 +1,7 @@
+Arkadaşlar ilk derste publisher, subscriber ve msg konuları üzerinde durmuştuk.
+Bunları pekiştirmek amaçlı ufak bir problem üzerinde tartışalım diyoruz ikinci derste. 
+İsteyenler problemi koda da dökebilir tabi, bootcamp için açtığınız git repo larına yüklerseniz hepimiz faydalanırız ayrıca. 
+Problem şu, msg dosyalarını görmüştük, bunları biliyoruz. Elimizde çok büyük boyutlu bir msg olduğunu düşünelim(PointCloud, Image). 
+Bunu 2 node arasında pub sub mantığı ile aktarmak istiyoruz. Ancak dosya boyutundan dolayı aktarım çok yavaş oluyor. 
+Buna nasıl bir çözüm getirebiliriz(gerçek zamanlıya yakın bir sistem tasarlamak istiyorsak bu problem ciddi sıkıntılara yol açabilir.). 
+Son olarak nodelet kullanmadan yapmamız gerektiğini de belirtelim arkadaşlar
