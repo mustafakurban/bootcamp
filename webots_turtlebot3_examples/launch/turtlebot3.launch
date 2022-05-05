@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+
+<launch>
+  <!-- ros_control -->
+  <!-- <rosparam command="load"
+            file="$(find webots_turtlebot3_examples)/config/diff_drive.yaml"/>
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="diff_drive_controller"/> -->
+
+  <!-- Start Webots -->
+  <arg name="no_gui" default="false" doc="Start Webots with minimal GUI"/>
+  <include file="$(find webots_turtlebot3_examples)/launch/webots.launch">
+    <arg name="mode" value="realtime"/>
+    <arg name="no_gui" value="$(arg no_gui)"/>
+    <arg name="world" value="$(find webots_turtlebot3_examples)/worlds/turtlebot3_burger.wbt"/>
+  </include>
+
+  <!-- rviz -->
+  <arg name="rviz" default="$(find webots_turtlebot3_examples)/rviz/saha_navigation.rviz" doc="Start Webots with minimal GUI"/>
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg rviz)" />
+
+
+  <!-- robot description -->
+  <arg name="turtle_bot_xacro" default="$(find webots_turtlebot3_examples)/urdf/turtlebot.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(arg turtle_bot_xacro)'"/>
+
+  <!-- robot_state_publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" respawn="true" respawn_delay="5"/>
+  <node pkg ="robot_state_publisher" type="robot_state_publisher" name="state_publisher" respawn="true" respawn_delay="5"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="turtle_lidar_tf" args="0 0 0 0 0 3.14 '/LDS_01' /TurtleBot3Burger/LDS_01 100"/>
+
+</launch>

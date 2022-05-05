@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from bootcamp.msg import example
+from rospy_tutorial.msg import example
 
 def talker():
     pub = rospy.Publisher('custom_chatter', example, queue_size=10)

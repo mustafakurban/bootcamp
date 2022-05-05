@@ -1,0 +1,11 @@
+Webots Proto Cache File version 1.5
+protoFileHash: e4c34da9eadc4ff7b7bce203d9fc10ab
+needsRobotAncestor: 1
+baseType: Robot
+slotType: 
+parameters: translation,rotation,name,controller,controllerArgs,customData,supervisor,synchronization,extensionSlot
+tags: 
+license:  Apache License 2.0
+licenseUrl:  http://www.apache.org/licenses/LICENSE-2.0
+documentationUrl: https://www.cyberbotics.com/doc/guide/turtlebot3burger
+info: Burger\smodel\sof\sthe\sthird\sversion\sof\sthe\sTurtleBot\srobot.

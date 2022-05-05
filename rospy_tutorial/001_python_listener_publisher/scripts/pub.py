@@ -1,16 +1,17 @@
 #!/usr/bin/env python
-# license removed for brevity
+
 import rospy
-from std_msgs.msg import String
+from std_msgs.msg import String,Int32
 
 def talker():
-    pub = rospy.Publisher('chatter', String, queue_size=10)
+    pub = rospy.Publisher('chatter', Int32, queue_size=10)
     rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
+        int_32 = Int32()
+        int_32.data = 12
+   
+        pub.publish(int_32)
         rate.sleep()
 
 if __name__ == '__main__':
