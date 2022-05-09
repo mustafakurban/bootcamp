@@ -65,7 +65,12 @@ WoodenBox {
   name "wooden box(6)"
   size 0.3 0.3 0.3
 }
-TurtleBot3Burger {
-  controller "turtlebot3_ostacle_avoidance"
+Tb3BurgerConverted {
+  controller "ros"
+  controllerArgs [
+    "--name=TurtleBot3Burger"
+    "--use-ros-control"
+    "--auto-publish"
+  ]
   
 }

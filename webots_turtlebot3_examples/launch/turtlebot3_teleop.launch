@@ -20,6 +20,11 @@
   <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg rviz)" />
 
 
+  <!-- teleop -->
+  <!-- TODO: weekly assigment -->
+  <node name="keyboard_control" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" respawn="true" respawn_delay="5" output="screen"/>
+  
+
   <!-- robot description -->
   <arg name="turtle_bot_xacro" default="$(find webots_turtlebot3_examples)/urdf/turtlebot.xacro"/>
   <param name="robot_description" command="$(find xacro)/xacro '$(arg turtle_bot_xacro)'"/>

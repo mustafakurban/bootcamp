@@ -1,0 +1,265 @@
+#VRML_SIM R2022a utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Tb3BurgerConverted
+# Extracted from: /home/mustafa/saharobotic/development-and-test-side/src/saha_bot/urdf/tb3_burger_will_be_converted.urdf
+
+PROTO Tb3BurgerConverted [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Tb3BurgerConverted"  # Is `Robot.name`.
+  field  SFString    controller      "void"                # Is `Robot.controller`.
+  field  MFString    controllerArgs  []                    # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""                    # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE                 # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE                  # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   TRUE                 # Is `Robot.selfCollision`.
+  field MFNode     extensionSlot   [ RobotisLds01   {
+    translation 0 0 0.03
+    name "base_scan"}]
+  field SFNode             cameraSlot                   tb3_camera {
+                                                          rotation 0 1 0 0
+                                                          translation -0.01 0.0 0.09
+                                                        }  
+    
+    ]
+
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+
+
+
+    children [
+
+      ## base solid ####################
+      Solid {
+        translation 0.000000 0.000000 0.010000
+        rotation 0.000000 0.000000 1.000000 0.000000
+        children [
+          Transform {
+            translation -0.032000 0.000000 0.000000
+            rotation 0.000000 0.000000 1.000000 0.000000
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 1
+                  emissiveColor 0.000000 0.000000 0.000000
+                }
+                geometry DEF burger_base Mesh {
+                  url "/home/mustafa/saharobotic/development-and-test-side/src/saha_bot/meshes/burger_base_scaled.stl"
+                }
+              }
+            ]
+          }
+          DEF LEFT_JOINT HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 1.000000 0.000796
+              anchor 0.000000 0.080000 0.023000
+              dampingConstant 0.0
+            }
+            device [
+              RotationalMotor {
+                name "wheel_left_joint"
+                maxTorque 5
+                maxVelocity 4.18
+                consumptionFactor -0.001
+              }
+              PositionSensor {
+                name "wheel_left_joint_sensor"
+                resolution 0.00628
+              }
+            ]
+            endPoint Solid {
+              translation 0.000000 0.080000 0.023000
+              rotation -1.000000 0.000000 0.000000 1.570000
+
+              children [
+                Transform {
+                  translation 0.000000 0.03500000 0.000000
+                  rotation 1.000000 0.000000 0.000000 1.570000
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 1
+                        emissiveColor 0.000000 0.000000 0.000000
+                      }
+                      geometry DEF left_tire Mesh {
+                        url "/home/mustafa/saharobotic/development-and-test-side/src/saha_bot/meshes/left_tire_converted.stl"
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "wheel_left_link"
+              boundingObject Cylinder {
+                radius 0.033
+                height 0.018
+              }
+              physics Physics {
+                density -1
+                mass 0.028499
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+              }
+            }
+          }
+          DEF RIGHT_JOINT HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0.000000 1.000000 0.000796
+              anchor 0.000000 -0.080000 0.023000
+              dampingConstant 0.0
+            }
+            device [
+              RotationalMotor {
+                name "wheel_right_joint"
+                maxTorque 5
+                maxVelocity 4.18
+                consumptionFactor -0.001
+              }
+              PositionSensor {
+                name "wheel_right_joint_sensor"
+                resolution 0.00628
+              }
+            ]
+            endPoint Solid {
+              translation 0.000000 -0.080000 0.023000
+              rotation -1.000000 0.000000 0.000000 1.570000
+              children [
+                Transform {
+                  translation 0.000000 0.035000 0.00000
+                  rotation 1.000000 0.000000 0.000000 1.570000
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.500000 0.500000 0.500000
+                        roughness 1.000000
+                        metalness 1
+                        emissiveColor 0.000000 0.000000 0.000000
+                      }
+                      geometry DEF right_tire Mesh {
+                        url "/home/mustafa/saharobotic/development-and-test-side/src/saha_bot/meshes/right_tire_converted.stl"
+                      }
+                    }
+                  ]
+                }
+              ]
+              name "wheel_right_link"
+              boundingObject Cylinder {
+                radius 0.033
+                height 0.018
+              }
+              physics Physics {
+                density -1
+                mass 0.028499
+                centerOfMass [ 0.000000 0.000000 0.000000 ]
+              }
+            }
+          }
+          Solid {
+            translation -0.081000 0.000000 -0.004000
+            rotation -1.000000 0.000000 0.000000 1.570000
+            name "caster_back_link"
+            boundingObject Transform {
+              translation 0.000000 0.001000 0.000000
+              rotation 0.000000 0.000000 1.000000 0.000000
+              children [
+                Box {
+                   size 0.030000 0.009000 0.020000
+                }
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 0.005000
+              centerOfMass [ 0.000000 0.000000 0.000000 ]
+            }
+          }
+          Solid {
+            translation -0.032000 0.000000 0.068000
+            rotation 0.000000 0.000000 1.000000 0.000000
+            name "imu_link"
+          }
+          Solid {
+            translation -0.032000 0.000000 0.139000
+            rotation 0.000000 0.000000 1.000000 0.000000
+            children IS extensionSlot
+            children [
+              
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.500000 0.500000 0.500000
+                  roughness 1.000000
+                  metalness 1
+                  emissiveColor 0.000000 0.000000 0.000000
+                }
+                geometry DEF lds Mesh {
+                  url "/home/mustafa/saharobotic/development-and-test-side/src/saha_bot/meshes/lds_converted.stl"
+                }
+              }
+            ]
+            name "base_scan"
+            boundingObject Transform {
+              translation 0.015000 0.000000 -0.006500
+              rotation 0.000000 0.000000 1.000000 0.000000
+              children [
+                Cylinder {
+                  radius 0.055
+                  height 0.0315
+                }
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 0.114000
+              centerOfMass [ 0.000000 0.000000 0.000000 ]
+            }
+          }
+          Transform {
+            translation 0.0488 0 0.042
+            children [
+              Slot {
+                endPoint Slot {
+                  endPoint IS cameraSlot
+                }
+              }
+            ]
+          }
+        ]
+        name "base_link"
+        boundingObject Transform {
+          translation -0.032000 0.000000 0.070000
+          rotation 0.000000 0.000000 1.000000 0.000000
+          children [
+            Box {
+               size 0.140000 0.140000 0.143000
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 0.825735
+          centerOfMass [ 0.000000 0.000000 0.000000 ]
+        }
+      }
+    ]
+    physics Physics {
+      density -1
+      mass 0.825735
+      centerOfMass [
+        -0.035 0 0.03
+      ]
+    }
+    name IS name
+  }
+}
