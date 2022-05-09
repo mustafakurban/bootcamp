@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- start Webots -->
+  <arg name="no_gui" default="false," doc="Start Webots with minimal GUI"/>
+  <include file="$(find webots_ros)/launch/webots.launch">
+    <arg name="mode" value="realtime"/>
+    <arg name="no_gui" value="$(arg no_gui)"/>
+    <arg name="world" value="/home/emredo/webotros_ws/src/turtlesim_teleop/worlds/area.wbt"/>
+  </include>
+
+  <arg name="auto_close" default="false" doc="Startup mode"/>
+  <node name="drive_controller" pkg="turtlesim_teleop" type="drive_controller.py"/>
+  <node name="direction_publisher" pkg="turtlesim_teleop" type="direction_publisher.py" />
+</launch>
