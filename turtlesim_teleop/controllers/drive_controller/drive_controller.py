@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+# TODO: It will be more advantageous going forward to write programs object-oriented.
+
 from controller import Robot,Lidar
 import rospy
 import time
