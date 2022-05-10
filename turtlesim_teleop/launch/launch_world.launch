@@ -5,7 +5,7 @@
   <include file="$(find webots_ros)/launch/webots.launch">
     <arg name="mode" value="realtime"/>
     <arg name="no_gui" value="$(arg no_gui)"/>
-    <arg name="world" value="/home/emredo/webotros_ws/src/turtlesim_teleop/worlds/area.wbt"/>
+    <arg name="world" value="$(find turtlesim_teleop)/worlds/area.wbt"/>
   </include>
 
   <arg name="auto_close" default="false" doc="Startup mode"/>
