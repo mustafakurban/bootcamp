@@ -1,0 +1,58 @@
+<!--
+  Copyright 2016 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+
+<launch>
+
+  <arg name="rviz" default="$(find webots_turtlebot3_slam)/rviz/tb3_cartographer.rviz"/>
+
+
+  <!-- Start Webots -->
+  <include file="$(find webots_turtlebot3_examples)/launch/turtlebot3_teleop.launch">
+    <arg name="rviz" value="$(arg rviz)"/>
+  </include>
+
+
+  <!-- Arguments -->
+  <arg name="configuration_basename" default="tb3_lds_2d.lua"/>
+
+  <!-- move_base
+  <include file="$(find turtlebot3_navigation)/launch/move_base.launch">
+    <arg name="model" value="$(arg model)" />
+  </include> -->
+
+
+
+  <!-- output="screen" -->
+  <!-- cartographer_node -->
+  <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node" 
+        args="-configuration_directory $(find webots_turtlebot3_slam)/config
+              -configuration_basename $(arg configuration_basename)">
+      <remap from="scan" to="TurtleBot3Burger/base_scan/laser_scan"> </remap>
+      <remap from="odom" to="diff_drive_controller/odom"> </remap>
+
+  </node>
+
+
+  
+  <!-- cartographer_occupancy_grid_node -->
+  <node pkg="cartographer_ros" type="cartographer_occupancy_grid_node"
+        name="cartographer_occupancy_grid_node" 
+        args="-resolution 0.05" />
+
+
+</launch>

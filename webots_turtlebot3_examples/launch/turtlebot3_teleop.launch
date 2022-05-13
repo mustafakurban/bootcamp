@@ -22,7 +22,7 @@
 
   <!-- teleop -->
   <!-- TODO: weekly assigment -->
-  <node name="keyboard_control" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" respawn="true" respawn_delay="5" output="screen"/>
+  <node name="keyboard_control" pkg="webots_turtlebot3_examples" type="teleop.py" output="screen"/>
   
 
   <!-- robot description -->
