@@ -7,4 +7,4 @@ centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: -1
 globalOptionalRendering: LidarPointClouds
-renderingDevicePerspectives: Tb3BurgerConverted:base_camera;0;0.520312;0;0
+renderingDevicePerspectives: Tb3BurgerConverted:base_camera;0;0.464844;0;0

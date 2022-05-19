@@ -1,0 +1,27 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="map_file" default="$(find webots_turtlebot3_slam)/maps/map.yaml"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="move_forward_only" default="false"/>
+
+  <!-- tb3 bot -->
+  <include file="$(find webots_turtlebot3_examples)/launch/turtlebot3_teleop.launch">
+    <arg name="rviz" value="$(find webots_turtlebot3_navigation)/rviz/webots_navigation.rviz"/>
+  </include>
+
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)">
+  </node>
+
+  <!-- AMCL -->
+  <include file="$(find webots_turtlebot3_navigation)/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find webots_turtlebot3_navigation)/launch/move_base.launch">
+    <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+  </include>
+
+
+
+
+</launch>
